@@ -19,24 +19,23 @@ python pipeline.py
 - [Assumptions](#assumptions)
 - [Known Limitations](#known-limitations)
 
-
- Project Structure
+## Project Structure
 
 ```
 Py/
-├── pipeline.py                  # Main entry point — run this
-├── generate_data.py             # Synthetic data generator for testing
+├── pipeline.py                   # Main entry point — run this
+├── generate_data.py              # Synthetic data generator for testing
 ├── data/
-│   ├── metadata.json            # Data element definitions
-│   ├── org_units.json           # Organisation unit hierarchy
-│   ├── programs.json            # Program metadata
-│   └── data_values.json         # Raw service delivery values
+│   ├── metadata.json             # Data element definitions
+│   ├── org_units.json            # Organisation unit hierarchy
+│   ├── programs.json             # Program metadata
+│   └── data_values.json          # Raw service delivery values
 ├── models/
-│   ├── ingest.py                # Data loading and exploding
-│   ├── metadata.py              # UID resolution and ghost record quarantine
-│   ├── hierarchy.py             # Org unit hierarchy resolution
-│   ├── quality.py               # Data quality checks and flags
-│   ├── warehouse.py             # Dimension and fact table builder
+│   ├── ingest.py                 # Data loading and exploding
+│   ├── metadata.py               # UID resolution and ghost record quarantine
+│   ├── hierarchy.py              # Org unit hierarchy resolution
+│   ├── quality.py                # Data quality checks and flags
+│   ├── warehouse.py              # Dimension and fact table builder
 │   └── analytics.py             # Analytics: MoM change, rolling avg, reporting rate
 └── output/
     ├── quarantine/ghost_records/ # Unresolved UID records (parquet)
@@ -46,6 +45,7 @@ Py/
     ├── fact_service_delivery/    # Fact table partitioned by period (parquet)
     ├── analytics/                # MoM and rolling average output (parquet)
     └── reporting_rate/           # Reporting rate by period (CSV)
+```
 
 ## Requirements
 
@@ -138,7 +138,7 @@ INFO: Pipeline completed successfully
 +-------------------+     |      |      |
                           |      |      |
                    +------+------+------+------+
-                   |     fact_service_delivery  |
+                   |   fact_service_delivery    |
                    |----------------------------|
                    | orgUnit (FK)               |
                    | dataElement (FK)           |
@@ -148,6 +148,8 @@ INFO: Pipeline completed successfully
                    | is_explicit_zero           |
                    | is_late_reported           |
                    +----------------------------+
+```
+
 
 ## Pipeline Stages
 
