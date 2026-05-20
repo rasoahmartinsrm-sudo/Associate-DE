@@ -46,6 +46,7 @@ Py/
     ├── fact_service_delivery/    # Fact table partitioned by period (parquet)
     ├── analytics/                # MoM and rolling average output (parquet)
     └── reporting_rate/           # Reporting rate by period (CSV)
+```
 
 ## Requirements
 
@@ -149,6 +150,7 @@ INFO: Pipeline completed successfully
                    | is_late_reported           |
                    +----------------------------+
 
+```
 ## Pipeline Stages
 
 | Stage | Module | Description |
